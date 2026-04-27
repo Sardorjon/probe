@@ -1,0 +1,31 @@
+@if (data().length > 0) {
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <table mat-table [dataSource]="data()" class="w-full">
+      @for (column of columns(); track column) {
+        <ng-container [matColumnDef]="column">
+          <th
+            mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef
+            class="bg-slate-50 text-sm font-semibold text-slate-700"
+          >
+            {{ columnLabels[column] }}
+          </th>
+
+          <td mat-cell *matCellDef="let row" class="text-sm text-slate-700">
+            {{ cellValue(row, column) }}
+          </td>
+        </ng-container>
+      }
+
+      <tr mat-header-row *matHeaderRowDef="columns()"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns()"></tr>
+    </table>
+  </div>
+} @else {
+  <div
+    class="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500"
+  >
+    No data available.
+  </div>
+}

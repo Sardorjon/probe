@@ -1,0 +1,7 @@
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h1 class="text-2xl font-bold text-center my-4">Dashboard</h1>
+  <lib-dropdown [label]="dropdownLabel()" (projectChange)="onProjectChange($event)" />
+  <lib-stats [data]="metrics()" />
+  <lib-revenue-chart [data]="metrics()" />
+  <lib-table [data]="metrics()" [columns]="columns()" />
+</div>

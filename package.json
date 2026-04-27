@@ -4,6 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "mock:seed": "node tools/mock-api/seed.js",
+    "mock:api": "json-server db.json --port 3000",
+    "mock:start": "npm run mock:seed && npm run mock:api",
+    "dev": "concurrently \"npm run mock:api\" \"ng serve\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -11,6 +15,7 @@
   "private": true,
   "packageManager": "npm@11.12.1",
   "dependencies": {
+    "@angular/cdk": "^21.2.8",
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",
     "@angular/core": "^21.2.0",
